@@ -16,15 +16,10 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -33,7 +28,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![payment-overview]](main.jpeg)
+![Payment Ovewrview][payment-overview]
 
 This is a basic online payment systme based on ERC20 tokens. 
 
@@ -47,13 +42,15 @@ On blockchain side, we has 3 contracts. One is Sampmle ERC20 Token itself, the o
 * Backend accepts requests for payment with user's public key and creates a payment id to any frontend user. It also listens the payment events and creates encrypted content and sends it to the user.
 * Contracts are one time deployed to the network and always be reachable. Once they are deployed, any wallet app can connect it and pay.
 
+
+![System Ovewrview][system-overview]
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [Node.js](https://nodejs.org/)
 * [React.js](https://reactjs.org/)
@@ -69,64 +66,38 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The project runs as follows step-by-step:
+
+* User reaches the page on a browser. 
+* Metamask asks for access and shares the user's connected address' public key.
+* Then products are listed on UI.
+* User chooses one of the products and clicks the buy button.
+* UI sends a request to get a paymentID from the server. The request must contain the user's public key.
+* Backend server gets the request, creates a random paymentID, and saves it to MongoDB with the user's public key. This step is important to deliver the content safely.
+* After getting payment ID specifically generated for the user, the user calls ERC20 token contract's approve function to let Payment Gateway token gets payment. On this step, the Payment Gateway contract has the right to spend tokens in a specified amount on behalf of the user.
+* Then user calls Payment Gateway contracts' pay method, which has got the payment authority, to finalize the payment.
+* Payment Gateway contract transfers specified amount from user's account to seller account.
+* After the transfer function runs, the contract emits the PaymentDone event with payment ID, timestamp, etc. information.
+* When Server's event listener catches the PaymentDone event with the specified payment ID, encrypts the content with the buyer's public key, and sends it to the buyer.
+* Buyer gets the encrypted data and decrypts it with the private key which was stored by Metamask and finds the bought content.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+* Metamask should be set up on browser. (https://metamask.io/)
+* Ganache is used as the local network. (https://trufflesuite.com/ganache/)
+
 * npm
   ```sh
   npm install npm@latest -g
   ```
+ 
+* Truffle
+  ```sh
+  npm install -g truffle
+  ```
 
-### Installation
+And the rest shuld be installed by following the project imports.
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -160,27 +131,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Salih Cemil Cetin - [@salihcemil](https://twitter.com/salihcemil) - salihceil@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+Project Link: [https://github.com/salihcemil/ERC20_PaymentSystem](https://github.com/salihcemil/ERC20_PaymentSystem)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -188,17 +141,7 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[payment-overview]: images/main.jpeg
+[product-screenshot]: images/main.jpeg
+[payment-overview]: images/main.jpg
+[system-overview]: images/HL-Overview.png
+
