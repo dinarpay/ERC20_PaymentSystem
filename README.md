@@ -43,8 +43,6 @@ On blockchain side, we has 3 contracts. One is Sampmle ERC20 Token itself, the o
 * Contracts are one time deployed to the network and always be reachable. Once they are deployed, any wallet app can connect it and pay.
 
 
-![System Ovewrview][system-overview]
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -65,6 +63,7 @@ On blockchain side, we has 3 contracts. One is Sampmle ERC20 Token itself, the o
 
 <!-- GETTING STARTED -->
 ## Getting Started
+![System Ovewrview][system-overview]
 
 The project runs as follows step-by-step:
 
