@@ -33,7 +33,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/salihcemil/ERC20_PaymentSystem/blob/main/images/main.jpg?raw=true)
+[![payment-overview]](main.jpeg)
 
 This is a basic online payment systme based on ERC20 tokens. 
 
@@ -55,14 +55,12 @@ On blockchain side, we has 3 contracts. One is Sampmle ERC20 Token itself, the o
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [Next.js](https://nextjs.org/)
+* [Node.js](https://nodejs.org/)
 * [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
+* [Ethers](https://docs.ethers.io/v5/)
+* [Mongoose](https://mongoosejs.com/)
+* [Koa](https://koajs.com/)
 * [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -203,3 +201,4 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
+[payment-overview]: images/main.jpeg
